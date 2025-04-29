@@ -3,9 +3,9 @@ import sqlite3
 
 app = Flask(__name__)
 
-# Creación de base de datos y tabla
+# Creación de bd
 def init_database():
-    # Se crea la base de datos en caso de que no exista
+    
     conn = sqlite3.connect("kardex.db")
     
     cursor =  conn.cursor()
@@ -31,7 +31,7 @@ def index():
 @app.route("/personas")
 def personas():
     conn = sqlite3.connect("kardex.db")
-    # Permite manejar los registros como diccionarios
+    # Permite manejar los registros 
     conn.row_factory = sqlite3.Row
     
     cursor = conn.cursor()
@@ -58,7 +58,7 @@ def personas_save():
     conn.close()
     return redirect('/personas')
 
-# Editar persona
+# Editar
 @app.route("/personas/edit/<int:id>")
 def persona_edit(id):
     conn =  sqlite3.connect("kardex.db")
@@ -84,7 +84,7 @@ def personas_update():
     conn.close()
     return redirect("/personas")
 
-# Eliminar registro
+# Eliminar 
 @app.route("/personas/delete/<int:id>")
 def personas_delete(id):
     conn = sqlite3.connect("kardex.db")
